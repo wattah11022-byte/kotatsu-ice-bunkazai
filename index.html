@@ -128,6 +128,7 @@
     width: 260px;
     height: 380px;
     margin: 10px auto 22px;
+    cursor: pointer;
   }
 
   .illust-gallery .slide {
@@ -142,7 +143,14 @@
     border-radius: 8px;
     opacity: 0;
     transform: scale(0.96);
-    animation: slideshow 12s infinite;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+
+  .illust-gallery .slide.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
   }
 
   .illust-gallery .slide img {
@@ -152,20 +160,15 @@
     border-radius: 6px;
   }
 
-  .illust-gallery .slide:nth-child(1) { animation-delay: 0s; }
-  .illust-gallery .slide:nth-child(2) { animation-delay: 4s; }
-
-  @keyframes slideshow {
-    0%   { opacity: 0; transform: scale(0.96); }
-    6%   { opacity: 1; transform: scale(1); }
-    44%  { opacity: 1; transform: scale(1); }
-    50%  { opacity: 0; transform: scale(0.96); }
-    100% { opacity: 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .illust-gallery .slide { animation: none; opacity: 1; position: relative; display: none; }
-    .illust-gallery .slide:first-child { display: flex; }
+  .illust-gallery .hint {
+    position: absolute;
+    bottom: -24px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: #9a7a4c;
+    letter-spacing: 0.05em;
   }
 
   table.detail {
@@ -239,9 +242,10 @@
     <h1 class="title">重要無形文化財</h1>
     <div class="subtitle">指 定 申 請 中</div>
 
-    <div class="illust-gallery">
-      <div class="slide"><img src="images/scene1.png" alt="こたつでバニラアイスを食べる図" onerror="this.parentElement.textContent='🛋️🍨'"></div>
+    <div class="illust-gallery" id="illustGallery">
+      <div class="slide active"><img src="images/scene1.png" alt="こたつでバニラアイスを食べる図" onerror="this.parentElement.textContent='🛋️🍨'"></div>
       <div class="slide"><img src="images/scene2.png" alt="こたつでチョコミントアイスを食べる図" onerror="this.parentElement.textContent='❄️🍦'"></div>
+      <div class="hint">画像をクリックで切り替え</div>
     </div>
 
     <div class="designation-no">申請番号　第 2026-こたつ-001 号</div>
@@ -290,5 +294,16 @@
 
     <div class="note">※ 本証書はジョークコンテンツであり、実在の文化財制度とは一切関係ありません</div>
   </div>
+
+  <script>
+    const gallery = document.getElementById('illustGallery');
+    const slides = gallery.querySelectorAll('.slide');
+    let current = 0;
+    gallery.addEventListener('click', () => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    });
+  </script>
 </body>
 </html>
