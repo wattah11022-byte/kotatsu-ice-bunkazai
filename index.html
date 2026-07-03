@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>重要無形文化財(仮)申請中 - こたつでアイス</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;800&family=Noto+Serif+JP:wght@400;600;900&display=swap');
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 40px 16px;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.03), transparent 40%),
+      linear-gradient(135deg, #2b1f16 0%, #1a120b 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Serif JP', serif;
+  }
+
+  .poster {
+    position: relative;
+    width: 780px;
+    max-width: 100%;
+    background: #f7f0e2;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(120,90,50,0.03) 0px, transparent 2px, transparent 4px),
+      radial-gradient(ellipse at top left, rgba(180,140,90,0.15), transparent 60%),
+      radial-gradient(ellipse at bottom right, rgba(180,140,90,0.15), transparent 60%);
+    border: 2px solid #6b4a2b;
+    outline: 10px solid #f7f0e2;
+    outline-offset: -22px;
+    box-shadow:
+      0 0 0 2px #6b4a2b inset,
+      0 25px 60px rgba(0,0,0,0.55);
+    padding: 56px 48px 40px;
+    color: #2b1a0e;
+  }
+
+  .poster::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid #b8975f;
+    pointer-events: none;
+  }
+
+  .kanban {
+    text-align: center;
+    letter-spacing: 0.15em;
+    font-size: 13px;
+    color: #8a6a3c;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  h1.title {
+    text-align: center;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 800;
+    font-size: 46px;
+    margin: 4px 0 4px;
+    letter-spacing: 0.08em;
+    color: #3a2410;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.4);
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 0.3em;
+    color: #6b4a2b;
+    margin-bottom: 26px;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 22px 0;
+    color: #b8975f;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b8975f, transparent);
+  }
+  .divider span { padding: 0 14px; font-size: 20px; }
+
+  .stamp-area {
+    position: absolute;
+    top: 48px;
+    right: 40px;
+    width: 128px;
+    height: 128px;
+    border: 5px double #b0332c;
+    color: #b0332c;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: 0.1em;
+    transform: rotate(-14deg);
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+    writing-mode: vertical-rl;
+    padding: 10px 6px;
+  }
+
+  .designation-no {
+    text-align: center;
+    font-size: 14px;
+    color: #6b4a2b;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+  }
+
+  .illust-gallery {
+    position: relative;
+    width: 260px;
+    height: 380px;
+    margin: 10px auto 22px;
+  }
+
+  .illust-gallery .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid #b8975f;
+    border-radius: 8px;
+    opacity: 0;
+    transform: scale(0.96);
+    animation: slideshow 12s infinite;
+  }
+
+  .illust-gallery .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .illust-gallery .slide:nth-child(1) { animation-delay: 0s; }
+  .illust-gallery .slide:nth-child(2) { animation-delay: 4s; }
+
+  @keyframes slideshow {
+    0%   { opacity: 0; transform: scale(0.96); }
+    6%   { opacity: 1; transform: scale(1); }
+    44%  { opacity: 1; transform: scale(1); }
+    50%  { opacity: 0; transform: scale(0.96); }
+    100% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .illust-gallery .slide { animation: none; opacity: 1; position: relative; display: none; }
+    .illust-gallery .slide:first-child { display: flex; }
+  }
+
+  table.detail {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 30px;
+    font-size: 15px;
+  }
+  table.detail th, table.detail td {
+    border: 1px solid #b8975f;
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.detail th {
+    background: rgba(184,151,95,0.18);
+    width: 130px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  table.detail td { background: rgba(255,255,255,0.25); line-height: 1.8; }
+
+  .description {
+    font-size: 15px;
+    line-height: 2;
+    margin: 26px 0;
+    text-align: justify;
+  }
+
+  .criteria {
+    font-size: 14px;
+    line-height: 1.9;
+    background: rgba(184,151,95,0.12);
+    border-left: 4px solid #8a6a3c;
+    padding: 16px 20px;
+    margin: 26px 0;
+  }
+  .criteria dt { font-weight: 700; margin-top: 8px; }
+  .criteria dt:first-child { margin-top: 0; }
+  .criteria dd { margin: 2px 0 0; color: #3a2410; }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 40px;
+    font-size: 13px;
+    color: #6b4a2b;
+  }
+
+  .footer .org {
+    font-size: 15px;
+    font-weight: 600;
+    color: #3a2410;
+  }
+
+  .note {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 12px;
+    color: #9a7a4c;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <div class="stamp-area">申請中</div>
+
+    <div class="kanban">冬季生活文化調査委員会 告示</div>
+    <h1 class="title">重要無形文化財</h1>
+    <div class="subtitle">指 定 申 請 中</div>
+
+    <div class="illust-gallery">
+      <div class="slide"><img src="images/scene1.png" alt="こたつでバニラアイスを食べる図" onerror="this.parentElement.textContent='🛋️🍨'"></div>
+      <div class="slide"><img src="images/scene2.png" alt="こたつでチョコミントアイスを食べる図" onerror="this.parentElement.textContent='❄️🍦'"></div>
+    </div>
+
+    <div class="designation-no">申請番号　第 2026-こたつ-001 号</div>
+
+    <table class="detail">
+      <tr><th>名称</th><td>こたつでアイス</td></tr>
+      <tr><th>よみ</th><td>こたつであいす</td></tr>
+      <tr><th>種別</th><td>風俗慣習・生活文化に関する無形の民俗文化財</td></tr>
+      <tr><th>伝承地域</th><td>日本国内全域（特に炬燵所有世帯）</td></tr>
+      <tr><th>伝承期間</th><td>毎年11月頃～翌年3月頃（最盛期：1月）</td></tr>
+      <tr><th>申請日</th><td>2026年7月3日</td></tr>
+    </table>
+
+    <div class="divider"><span>◆</span></div>
+
+    <p class="description">
+      「こたつでアイス」は、暖房器具である炬燵に下半身を収めながら、
+      冷菓であるアイスクリームを摂取するという、相反する温度体験を
+      同時に享受する生活文化である。動作の一切を最小限に抑えつつ
+      最大限の満足感を得るその合理性と、季節性を超越した背徳的な
+      味わいの深さは、日本の家庭に古くから根付く炬燵文化と、
+      戦後急速に普及した冷凍菓子文化との幸福な融合として、
+      民俗学的にも高く評価されるものである。
+    </p>
+
+    <div class="criteria">
+      <dl>
+        <dt>一、歴史的価値</dt>
+        <dd>炬燵の普及と家庭用冷凍庫の一般化以降、自然発生的に形成された生活様式であること。</dd>
+        <dt>二、学術的価値</dt>
+        <dd>「暖」と「冷」の同時享受という対比構造が、味覚・体感双方に独自の快をもたらす稀有な事例であること。</dd>
+        <dt>三、地域的特色</dt>
+        <dd>年末年始の団らんの場において、家族・友人間で反復継承されている実態が認められること。</dd>
+      </dl>
+    </div>
+
+    <div class="divider"><span>◆</span></div>
+
+    <div class="footer">
+      <div>
+        <div class="org">冬季生活文化調査委員会</div>
+        <div>審査部会　御中</div>
+      </div>
+      <div>本件は現在審査継続中であり、指定を確約するものではありません。</div>
+    </div>
+
+    <div class="note">※ 本証書はジョークコンテンツであり、実在の文化財制度とは一切関係ありません</div>
+  </div>
+</body>
+</html>
